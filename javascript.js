@@ -1,13 +1,3 @@
-let humanScore = 0;
-let computerScore = 0;
-
-// function PlayGame() {
-//     while (humanScore < 5 || computerScore < 5) {
-//         console.log(playRound(humanSelection, computerSelection))
-//         console.log(humanScore)
-//         console.log(computerScore)
-//     }
-
 function getComputerChoice() {
     let max = 3;
     let number = Math.floor(Math.random() * max);
@@ -36,7 +26,11 @@ function getHumanChoice() {
     }
 }
 
+let humanScore = 0;
+let computerScore = 0;
+
 function playRound(humanChoice, computerChoice) {
+    
     console.log("Computer:", computerChoice);
     console.log("Human:", humanChoice);
 
@@ -57,7 +51,15 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+function playGame() {
+    while (humanScore < 5 && computerScore < 5) {
+        let humanSelection = getHumanChoice();
+        let computerSelection = getComputerChoice();
 
-console.log(playRound(humanSelection, computerSelection))
+        console.log(playRound(humanSelection, computerSelection));
+        console.log("Computerscore:", computerScore)
+        console.log("Jouw score:", humanScore)
+    }
+}
+
+playGame();
