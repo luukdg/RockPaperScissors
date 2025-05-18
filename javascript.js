@@ -2,18 +2,17 @@ let humanScore = 0;
 let computerScore = 0;
 
 function getComputerChoice() {
-    let max = 3
-    number = Math.floor(Math.random() * max)
+    let max = 3;
+    let number = Math.floor(Math.random() * max);
 
     if (number === 0) {
-        return "Rock"
+        return "Rock";
     } else if (number === 1) {
-        return "Paper"
+        return "Paper";
     } else {
-        return "Scissor"
+        return "Scissor";
     }
 }
-
 
 function getHumanChoice() {
     let answer = prompt("Rock, Paper, or Scissor?")
@@ -31,11 +30,33 @@ function getHumanChoice() {
 }
 
 function playRound(humanChoice, computerChoice) {
+    console.log("Computer:", computerChoice);
+    console.log("Human:", humanChoice);
 
+    if (humanChoice === computerChoice) {
+        return "It's a draw. Play again."
+    } else if (humanChoice === "Rock" && computerChoice === "Scissor") {
+        humanScore++;
+        return "You win! Rock beats Scissor."
+    } else if (humanChoice === "Paper" && computerChoice === "Rock") {
+        humanScore++;
+        return "You win! Paper beats Rock."
+    } else if (humanChoice === "Scissor" && computerChoice === "Paper") {
+        humanScore++;
+        return "You win! Scissor beats Paper."
+    } else if (computerChoice === "Rock" && humanChoice === "Scissor") {
+        computerScore++;
+        return "You lose! Rock beats Scissor."
+    } else if (computerChoice === "Paper" && humanChoice === "Rock") {
+        computerScore++;
+        return "You lose! Paper beats Rock."
+    } else if (computerChoice === "Scissor" && humanChoice === "Paper") {
+        computerScore++;
+        return "You lose! Scissor beats Paper."
+    }
 }
 
-const humanChoice = getComputerChoice();
-const computerChoice = getComputerChoice();
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
 
-console.log(getComputerChoice())
-console.log(getHumanChoice())
+console.log(playRound(humanSelection, computerSelection));
