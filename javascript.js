@@ -1,6 +1,13 @@
 let humanScore = 0;
 let computerScore = 0;
 
+// function PlayGame() {
+//     while (humanScore < 5 || computerScore < 5) {
+//         console.log(playRound(humanSelection, computerSelection))
+//         console.log(humanScore)
+//         console.log(computerScore)
+//     }
+
 function getComputerChoice() {
     let max = 3;
     let number = Math.floor(Math.random() * max);
@@ -44,19 +51,13 @@ function playRound(humanChoice, computerChoice) {
     } else if (humanChoice === "Scissor" && computerChoice === "Paper") {
         humanScore++;
         return "You win! Scissor beats Paper."
-    } else if (computerChoice === "Rock" && humanChoice === "Scissor") {
+    } else {
         computerScore++;
-        return "You lose! Rock beats Scissor."
-    } else if (computerChoice === "Paper" && humanChoice === "Rock") {
-        computerScore++;
-        return "You lose! Paper beats Rock."
-    } else if (computerChoice === "Scissor" && humanChoice === "Paper") {
-        computerScore++;
-        return "You lose! Scissor beats Paper."
+        return "You lose! " + computerChoice + " beats " + humanChoice + "."
     }
 }
 
 const humanSelection = getHumanChoice();
 const computerSelection = getComputerChoice();
 
-console.log(playRound(humanSelection, computerSelection));
+console.log(playRound(humanSelection, computerSelection))
