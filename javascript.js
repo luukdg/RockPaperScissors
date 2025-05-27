@@ -11,43 +11,26 @@ function getComputerChoice() {
     }
 }
 
-function getHumanChoice() {
-    let answer = prompt("Rock, Paper, or Scissor?")
-    answerLower = answer.toLocaleLowerCase()
-
-    if (answerLower === "rock") {
-        return "Rock"
-    } else if (answerLower === "paper") {
-        return "Paper"
-    } else if (answerLower === "scissor") {
-        return "Scissor"
-    } else {
-        return "Fill in Rock, Paper or Scissor"
-    }
-}
-
-let humanScore = 0;
-let computerScore = 0;
-
 function playRound(humanChoice, computerChoice) {
+    const results = document.querySelector(".results")
     
     console.log("Computer:", computerChoice);
     console.log("Human:", humanChoice);
 
     if (humanChoice === computerChoice) {
-        return "It's a draw. Play again."
+        return results.textContent = "It's a draw. Play again."
     } else if (humanChoice === "Rock" && computerChoice === "Scissor") {
         humanScore++;
-        return "You win! Rock beats Scissor."
+        return results.textContent = "You win! Rock beats Scissor."
     } else if (humanChoice === "Paper" && computerChoice === "Rock") {
         humanScore++;
-        return "You win! Paper beats Rock."
+        return results.textContent = "You win! Paper beats Rock."
     } else if (humanChoice === "Scissor" && computerChoice === "Paper") {
         humanScore++;
-        return "You win! Scissor beats Paper."
+        return results.textContent = "You win! Scissor beats Paper."
     } else {
         computerScore++;
-        return "You lose! " + computerChoice + " beats " + humanChoice + "."
+        return results.textContent = "You lose! " + computerChoice + " beats " + humanChoice + "."
     }
 }
 
@@ -62,4 +45,30 @@ function playGame() {
     }
 }
 
-playGame();
+let humanScore = 0;
+let computerScore = 0;
+
+// Rock, Paper and Scissor functions
+const rock = document.querySelector("#rock");
+const paper = document.querySelector("#paper");
+const scissor = document.querySelector("#scissor");
+const human = document.querySelector(".human")
+const computer = document.querySelector(".computer")
+
+rock.addEventListener("click", () => {
+    console.log(playRound("Rock", getComputerChoice()));
+    human.textContent = humanScore;
+    computer.textContent = computerScore;
+})
+
+paper.addEventListener("click", () => {
+    console.log(playRound("Paper", getComputerChoice()));
+    human.textContent = humanScore;
+    computer.textContent = computerScore;
+})
+
+scissor.addEventListener("click", () => {
+    console.log(playRound("Scissor", getComputerChoice()));
+    human.textContent = humanScore;
+    computer.textContent = computerScore;
+})
